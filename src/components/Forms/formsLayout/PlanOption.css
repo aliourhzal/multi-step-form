@@ -1,0 +1,77 @@
+.custom-radio input {
+	display: none;
+}
+
+.radio-btn {
+	border: 1px solid hsl(229, 24%, 87%);
+	padding: 15px;
+	border-radius: 7px;
+	height: 100%;
+	width: 100%;
+}
+
+.radio-btn:hover {
+	border: 1px solid hsl(243, 100%, 62%);
+}
+
+.planProps {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+}
+
+.planTitle {
+	font-weight: 500;
+	color: hsl(213, 96%, 18%);
+	margin-top: auto;
+	display: block;
+	text-transform: capitalize;
+}
+
+.planBill {
+	color: hsl(231, 11%, 63%);
+	font-size: 14px;
+	display: block;
+}
+
+.planProps img {
+	height: 40px;
+	width: 40px;
+}
+
+.custom-radio input[type="radio"]:checked + .radio-btn {
+	border: 1px solid hsl(243, 100%, 62%);
+	background-color: hsl(217, 100%, 97%);
+}
+
+.discount {
+	font-size: 14px;
+	color: hsl(213, 96%, 18%);
+}
+
+@media (max-width: 725px) {
+	.planProps {
+		display: grid;
+		grid-template-columns: 40px 1fr;
+		grid-template-rows: repeat(3);
+		grid-column-gap: 15px;
+		grid-row-gap: 5px;
+	}
+	
+	.planProps img {
+		grid-area: 1 / 1 / 4 / 2; ;
+	}
+
+	.planTitle {
+		grid-area: 1 / 2 / 2 / 3;
+	}
+
+	.planBill {
+		grid-area: 2 / 2 / 3 / 3;
+	}
+
+	.discount {
+		grid-area: 3 / 2 / 4 / 3;
+	}
+}

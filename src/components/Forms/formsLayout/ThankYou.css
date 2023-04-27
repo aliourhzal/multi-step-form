@@ -1,0 +1,27 @@
+.thanksBox {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.thanksBox h1 {
+	color: hsl(213, 96%, 18%);
+	margin-bottom: 10px;
+	margin-top: 30px;
+	font-size: 37px;
+}
+
+.thanksBox p {
+	color: hsl(231, 11%, 63%);
+	text-align: center;
+	font-size: 18px;
+}
+
+@media (max-width: 725px) {
+	.thanksBox p {
+		line-height: 1.6;
+	}
+}

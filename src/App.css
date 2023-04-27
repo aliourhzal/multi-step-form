@@ -1,0 +1,25 @@
+.formContainer {
+	height: 70%;
+	width: 66%;
+	background-color: white;
+	display: flex;
+}
+
+@media (max-height: 800px) {
+	.formContainer {
+		height: 95%;
+	}
+}
+
+@media (max-width: 725px) {
+	.formContainer {
+		height: 100%;
+		width: 100%;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		border-radius: 0px;
+		background-color: hsl(229, 24%, 87%);
+		align-items: center;
+	}
+}

@@ -1,0 +1,96 @@
+.formBox {
+	height: 100%;
+	width: 70%;
+	display: flex;
+	justify-content: center;
+	/* align-items: center; */
+}
+
+.formHolder {
+	display: flex;
+	flex-direction: column;
+	width: 60%;
+}
+
+.formHeader {
+	margin: 40px 0 30px 0;
+}
+
+.formHeader h1 {
+	color: hsl(213, 96%, 18%);
+	font-size: 37px;
+	margin: 0;
+}
+
+.formHeader p {
+	color: hsl(231, 11%, 63%);
+}
+
+.formHolder .nav {
+	margin-top: auto;
+	display: flex;
+	justify-content: space-between;
+}
+
+.formHolder .nav button {
+	padding: 15px 25px;
+	outline: none;
+	border: none;
+	font-size: 1rem;
+	font-weight: 700;
+	border-radius: 10px;
+	width: fit-content;
+	cursor: pointer;
+}
+
+.nextBtn {
+	background-color: hsl(243, 100%, 62%);
+	color: white;
+	margin-left: auto;
+}
+
+.backBtn {
+	background-color: transparent;
+	color: hsl(231, 11%, 63%);
+}
+
+.backBtn:hover {
+	color: hsl(213, 96%, 18%);
+}
+
+@media (max-width: 1250px) {
+	.formBox {
+		width: 90%;
+	}
+	.formHolder {
+		width: 90%;
+	}
+}
+
+@media (max-width: 725px) {
+	.formHolder {
+		width: 90%;
+	}
+	.formBox {
+		height: 70%;
+		background-color: white;
+		width: 90%;
+		border-radius: 10px;
+		margin-top: -70px;
+		box-shadow: 0px 19px 45px -24px rgba(0,0,0,0.56);
+	}
+	.formHeader h1 {
+		font-size: 28px;
+	}
+
+	.nav {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		padding: 15px;
+		background-color: white;
+
+	}
+}
+

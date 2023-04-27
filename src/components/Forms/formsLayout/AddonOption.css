@@ -1,0 +1,76 @@
+
+.custom-box input {
+	display: none;
+}
+
+.checkbox-btn {
+	display: flex;
+	padding: 20px 25px;
+	width: 100%;
+	flex-direction: row;
+	align-items: center;
+	border: 1px solid hsl(229, 24%, 87%);
+	border-radius: 10px;
+	gap: 25px;
+	margin-bottom: 17px;
+}
+
+.checkbox-btn:hover {
+	border-color: hsl(243, 100%, 62%);
+}
+
+.check-icon {
+	height: 24px;
+	width: 25px;
+	border: 1px solid hsl(229, 24%, 87%);
+	border-radius: 5px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0;
+}
+
+.check-icon img {
+	height: auto;
+	width: 13px;
+	display: none;
+}
+
+.add-on {
+	margin: 0;
+}
+
+.add-on .subject {
+	font-weight: 500;
+	color: hsl(213, 96%, 18%);
+	font-size: 18px;
+	margin-bottom: 5px;
+}
+
+.add-on .description {
+	color: hsl(231, 11%, 63%);
+}
+
+.price {
+	margin-left: auto;
+	color: hsl(243, 100%, 62%);
+}
+
+.custom-box input:checked + .checkbox-btn {
+	background-color: hsl(217, 100%, 97%);
+	border-color: hsl(243, 100%, 62%);
+}
+
+.custom-box input:checked + .checkbox-btn .check-icon {
+	background-color:  hsl(243, 100%, 62%);
+}
+
+.custom-box input:checked + .checkbox-btn .check-icon img {
+	display: block;
+}
+
+@media (max-width: 725px) {
+	.add-on .description {
+		font-size: 14px;
+	}
+}

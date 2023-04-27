@@ -1,0 +1,81 @@
+.summeryBox {
+	background-color: hsl(217, 100%, 97%);
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	border-radius: 10px;
+	padding: 25px;
+}
+
+.plan {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding-bottom: 20px;
+	border-bottom: 1px solid hsl(231, 11%, 85%);
+}
+
+.selectedPlan {
+	color: hsl(213, 96%, 18%);
+	font-weight: 500;
+	text-transform: capitalize;
+}
+
+.changeBtn {
+	display: block;
+	outline: none;
+	background: none;
+	border: none;
+	text-decoration: underline;
+	margin-top: 7px;
+	font-size: 16px;
+	padding: 0;
+	color: hsl(231, 11%, 63%);
+}
+
+.pricing {
+	color: hsl(213, 96%, 18%);
+	font-weight: 700;
+}
+
+.addons {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.addon {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;	
+}
+
+.addonTitle {
+	color: hsl(231, 11%, 63%);
+}
+
+.addonTitle::first-letter {
+	text-transform: uppercase;
+}
+
+.addonPrice {
+	color: hsl(213, 96%, 18%);
+}
+
+.total {
+	padding: 40px 20px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.total span:first-child {
+	color: hsl(231, 11%, 63%);
+}
+
+
+.total span:last-child {
+	color: hsl(243, 100%, 62%);
+	font-size: 24px;
+	font-weight: 700;
+}
