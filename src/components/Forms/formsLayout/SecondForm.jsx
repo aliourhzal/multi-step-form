@@ -1,8 +1,11 @@
 
-import { useState } from 'react';
-import PlanOption from './PlanOption';
-import { useDispatch } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+
 import { planActions } from '../../../store/planSlice';
+import { stepsActions } from '../../../store/currentStepSlice';
+import PlanOption from './PlanOption';
 
 import './SecondForm.css'
 
@@ -27,6 +30,14 @@ const PLANS = [
 function SecondForm(props) {
 	const [monthlyToggle, setmonthlyToggle] = useState(true);
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
+	const { currentStep, availablePages } = useSelector(state => state.steps);
+
+	useEffect(() => {
+		if (currentStep !== 1)
+			navigate('/personalInfo');
+	}, []);
+		
 	
 	const toggleChangeHandler = function (e) {
 		const monthly = document.querySelector('.monthly');
@@ -60,7 +71,13 @@ function SecondForm(props) {
 		}
 		paymentMode.checked ? mode = 'yearly' : mode = 'monthly';
 		dispatch(planActions.setMode(mode));
-		props.next();
+		dispatch(stepsActions.nextPage());
+		navigate('/pickAddons');
+	}
+
+	const previousStep = function () {
+		dispatch(stepsActions.previousPage());
+		navigate(availablePages[currentStep - 1]);
 	}
 
 	return (
@@ -88,6 +105,10 @@ function SecondForm(props) {
 					<span className='yearly'>yearly</span>
 				</div>
 			</form>
+			<div className="nav">
+				<button className="backBtn" onClick={previousStep}>Go Back</button>
+				<button className="nextBtn" type="submit" form='second'>Next Step</button>
+			</div>
 		</>
 	);
 }

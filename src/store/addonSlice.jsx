@@ -2,10 +2,15 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const addonSlice =  createSlice({
 	name: 'addon',
-	initialState: [],
+	initialState: {
+		addons: []
+	},
 	reducers: {
 		addAddon(state, action) {
-			state.push(action.payload);
+			state.addons.push(action.payload);
+		},
+		removeAddons(state) {
+			state.addons = [];
 		}
 	}
 })

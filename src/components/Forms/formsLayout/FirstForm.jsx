@@ -2,12 +2,17 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { info } from '../../../store/infoSlice';
+import { stepsActions } from '../../../store/currentStepSlice';
+
+
+import { useNavigate } from 'react-router-dom';
 
 import './FirstForm.css'
 
 let errorMsg = '';
 
 function FirstForm(props) {
+	const navigate = useNavigate();
 	const inputIsValid = {
 		empty: false,
 		valid: true
@@ -22,7 +27,6 @@ function FirstForm(props) {
 	const [enteredPhone, setPhone] = useState('');
 	const [phoneIsValid, setPhoneIsValid] = useState(inputIsValid);
 	const dispatch = useDispatch();
-
 
 	const nameChangeHandler = function(e) {
 		setNameIsValid(inputIsValid);
@@ -72,11 +76,11 @@ function FirstForm(props) {
 			return;
 		}
 
-
 		dispatch(info.setName(enteredName));
 		dispatch(info.setEmail(enteredEmail));
 		dispatch(info.setPhone(enteredPhone));
-		props.next();
+		dispatch(stepsActions.nextPage());
+		navigate('/selectPlan');
 	}
 
 	return (
@@ -108,6 +112,9 @@ function FirstForm(props) {
 					<input id='phone' type="tel" placeholder='e.g. +1 234 567 890' value={enteredPhone} onChange={phoneChangeHandler} />
 				</div>
 			</form>
+			<div className="nav">
+				<button className="nextBtn" type="submit" form='first'>Next Step</button>
+			</div>
 		</>
 	);
 }

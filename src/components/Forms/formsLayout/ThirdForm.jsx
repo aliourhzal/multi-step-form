@@ -1,7 +1,11 @@
 
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+
 import AddonOption from './AddonOption';
 import { addonActions } from '../../../store/addonSlice';
+import { stepsActions } from '../../../store/currentStepSlice';
 
 import './ThirdForm.css'
 
@@ -21,12 +25,20 @@ const ADDONS = [
 		description: 'Custom theme on your profile',
 		monthlyPrice: 2
 	},
+
 ]
 
 function ThirdForm(props) {
 	const { mode } = useSelector(state => state.plan);
 	const dispatch = useDispatch();
-	console.log(mode);
+	const navigate = useNavigate();
+	const { currentStep, availablePages } = useSelector(state => state.steps);
+
+	useEffect(() => {
+		if (currentStep !== 2){
+			navigate(availablePages[currentStep]);
+		}
+	});
 
 	const formSubmitHandler = (e) => {
 		e.preventDefault();
@@ -39,8 +51,14 @@ function ThirdForm(props) {
 				}));
 			}
 		}
-		props.next();
+		dispatch(stepsActions.nextPage());
+		navigate('/summery');
 	}
+
+	const previousStep = function () {
+		dispatch(stepsActions.previousPage());
+		navigate(availablePages[currentStep - 1]);
+	} 
 
 	return (
 		<>
@@ -57,6 +75,10 @@ function ThirdForm(props) {
 					})
 				}
 			</form>
+			<div className="nav">
+				<button className="backBtn" onClick={previousStep}>Go Back</button>
+				<button className="nextBtn" type="submit" form='third'>Next Step</button>
+			</div>
 		</>
 	);
 }

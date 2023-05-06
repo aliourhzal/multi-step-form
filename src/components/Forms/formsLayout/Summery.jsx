@@ -1,5 +1,10 @@
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+
+import { stepsActions } from '../../../store/currentStepSlice';
+import { addonActions } from '../../../store/addonSlice';
 
 import Card from '../../UI/Card';
 
@@ -16,16 +21,34 @@ function Addon(props) {
 
 function Summery(props) {
 
-	const {plan, mode, price} = useSelector(state => state.plan);
-	const addons = useSelector(state => state.addons);
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
+	const { currentStep, availablePages } = useSelector(state => state.steps);
+	const { plan, mode, price } = useSelector(state => state.plan);
+	const { addons } = useSelector(state => state.addons);
 	const paymentMethod = mode === 'monthly' ? 'mo' : 'yr';
 	const modeFactor = paymentMethod === 'mo' ? 1 : 10;
 	const pricingTicket = `$${paymentMethod === 'mo' ? price : price * 10}/${paymentMethod}`;
 	let totalAmount = price * modeFactor;
 
+	console.log(addons);
+
+	useEffect(() => {
+		if (currentStep !== 3){
+			navigate(availablePages[currentStep]);
+		}
+	});
+
 	const formSubmitHandler = (e) => {
 		e.preventDefault();
-		props.next();
+		dispatch(stepsActions.nextPage());
+		navigate('/thankYou');
+	}
+	
+	const changePlanHandler = function() {
+		dispatch(addonActions.removeAddons());
+		dispatch(stepsActions.changePage(1));
+		navigate('/selectPlan');
 	}
 
 	return (
@@ -38,7 +61,7 @@ function Summery(props) {
 				<div className="plan">
 					<div className="planOption">
 						<span className="selectedPlan">{`${plan} (${mode})`}</span>
-						<button className='changeBtn'>change</button>
+						<button className='changeBtn' onClick={changePlanHandler}>change</button>
 					</div>
 					<div className="pricing">{pricingTicket}</div>
 				</div>
@@ -56,6 +79,10 @@ function Summery(props) {
 			<div className="total">
 				<span>Total (per year)</span>
 				<span className='totalAmount'>${totalAmount}/{paymentMethod}</span>
+			</div>
+			<div className="nav">
+				<button className="backBtn" >Go Back</button>
+				<button className="nextBtn" type="submit" form='fourth'>Next Step</button>
 			</div>
 		</>
 	);

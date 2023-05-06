@@ -70,6 +70,7 @@
 @media (max-width: 725px) {
 	.formHolder {
 		width: 90%;
+		overflow: scroll;
 	}
 	.formBox {
 		height: 70%;

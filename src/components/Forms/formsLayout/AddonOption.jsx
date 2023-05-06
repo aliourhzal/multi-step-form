@@ -5,7 +5,6 @@ function AddonOption(props) {
 
 	const paymentMethod = props.mode === 'monthly' ? 'mo' : 'yr';
 	const modeFactor = paymentMethod === 'mo' ? 1 : 10;
-	console.log(props.mode); 
 
 	return (
 		<label className='custom-box'>

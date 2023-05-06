@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initPlan = {
-	plan: 'test',
-	mode: 'test11',
+	plan: '',
+	mode: '',
 	price: 0
 }
 

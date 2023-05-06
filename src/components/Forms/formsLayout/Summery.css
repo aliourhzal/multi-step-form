@@ -31,6 +31,7 @@
 	font-size: 16px;
 	padding: 0;
 	color: hsl(231, 11%, 63%);
+	cursor: pointer;
 }
 
 .pricing {
